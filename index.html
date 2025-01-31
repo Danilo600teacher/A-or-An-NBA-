@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A or An Game</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #1d428a;  /* NBA Blue */
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #container {
+      background: #fff;
+      color: #1d428a;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      padding: 30px 40px;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #1d428a;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .question label {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    select {
+      padding: 8px 12px;
+      font-size: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    select:hover {
+      border-color: #1d428a;
+    }
+
+    button {
+      background: #c9082a;  /* NBA Red */
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #a00623;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1d428a;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>A or An Game</h1>
+    <p>Complete each sentence by choosing <strong>a</strong> or <strong>an</strong></p>
+
+    <form id="quiz">
+      <div class="question">
+        <label>LeBron James is _____ famous basketball player.</label>
+        <select id="q1">
+          <option value="">Select an answer</option>
+          <option value="a">a</option>
+          <option value="an">an</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>We watched _____ exciting game between the Lakers and the Warriors.</label>
+        <select id="q2">
+          <option value="">Select an answer</option>
+          <option value="a">a</option>
+          <option value="an">an</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>They built _____ new arena for the upcoming season.</label>
+        <select id="q3">
+          <option value="">Select an answer</option>
+          <option value="a">a</option>
+          <option value="an">an</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>The coach gave _____ important speech before the game.</label>
+        <select id="q4">
+          <option value="">Select an answer</option>
+          <option value="a">a</option>
+          <option value="an">an</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>The player made _____ incredible dunk in the final seconds!</label>
+        <select id="q5">
+          <option value="">Select an answer</option>
+          <option value="a">a</option>
+          <option value="an">an</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>I bought _____ basketball from the NBA store.</label>
+        <select id="q6">
+          <option value="">Select an answer</option>
+          <option value="a">a</option>
+          <option value="an">an</option>
+        </select>
+      </div>
+
+      <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: "a",
+        q2: "an",
+        q3: "a",
+        q4: "an",
+        q5: "an",
+        q6: "a"
+      };
+
+      let score = 0;
+      for (let [key, correctAnswer] of Object.entries(answers)) {
+        const userAnswer = document.getElementById(key).value;
+        if (userAnswer === correctAnswer) {
+          score++;
+        }
+      }
+
+      const result = document.getElementById("result");
+      result.textContent = `You scored ${score} out of 6!`;
+    }
+  </script>
+</body>
+</html>
